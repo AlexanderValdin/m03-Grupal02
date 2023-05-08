@@ -77,13 +77,13 @@ let rangoEtario;
 anioNacimiento.addEventListener('change', function () {
     // el año debe ser válido.
     // De qué maneras puede ser inválido el anio de Ingreso?
-    
     if ((parseInt(anioNacimiento.value) < parseInt(anioIngreso.value) 
     && 
     parseInt(anioNacimiento.value) < fechaActual.getFullYear())) {
-        document.getElementById('AnioNacimientoError').style = 'display:block';
+        document.getElementById('anioNacimientoError').style .display= 'block';
     } 
     else  {
+        document.getElementById('anioNacimientoError').style.display='none';
         edad = fechaActual.getFullYear() - parseInt(anioNacimiento.value);
         if (fechaActual.getMonth() < parseInt(mesNacimiento.value)) {
             edad--;
@@ -109,7 +109,6 @@ anioNacimiento.addEventListener('change', function () {
                 rangoEtario = 'Años dorados';
                 break;
         };
-            //document.getElementById('AnioNacimientoError').style = 'display:none';
         }
 });
 
@@ -121,10 +120,10 @@ mesNacimiento.addEventListener('change', function() {
     if(parseInt(anioNacimiento.value) === fechaActual.getFullYear() 
         &&
         parseInt(mesNacimiento.value) > fechaActual.getMonth()) {
-            document.getElementById('mesNacimientoError').style = 'block';
+            document.getElementById('mesNacimientoError').style.display = 'block';
     }   else { 
         meses = parseInt(mesNacimiento.value) <= fechaActual.getMonth() ? meses = fechaActual.getMonth() - parseInt(mesNacimiento.value) : 12 + fechaActual.getMonth() - parseInt(mesNacimiento.value) ;
-        document.getElementById('mesNacimientoError').style = 'none'
+        document.getElementById('mesNacimientoError').style.display = 'none';
     }
 });
 
@@ -135,10 +134,10 @@ mesIngreso.addEventListener('change', function () {
     if (parseInt(anioIngreso.value) === fechaActual.getFullYear()
         &&
         parseInt(mesIngreso.value) > fechaActual.getMonth()) {
-        document.getElementById('mesIngresoError').style = 'display: block';
+        document.getElementById('mesIngresoError').style.display = 'block';
         //cambiar por clase que ingrese advertencia
     } else {
-        document.getElementById('mesIngresoError').style = 'display: none';
+        document.getElementById('mesIngresoError').style.display = 'none';
     }
 });
 
@@ -147,9 +146,9 @@ anioIngreso.addEventListener('change', function () {
     //Inválido si es mayor al año actual o si es menos al año de Nacimiento , o no?
     if (parseInt(anioIngreso.value) < parseInt(anioNacimiento.value)) {
 
-        document.getElementById('anioIngresoError').style = 'display: block';
+        document.getElementById('anioIngresoError').style.display ='block';
     } else {
-        document.getElementById('anioIngresoError').style = 'display: none';
+        document.getElementById('anioIngresoError').style.display= 'none';
         console.log(parseInt(anioNacimiento.value) - parseInt(anioIngreso.value));
     }
 });
@@ -176,6 +175,4 @@ document.addEventListener('submit', function (event) {
             document.getElementById('respuestaForm').innerHTML = `La persona es un trabajador activo con ${aniosActivo} años y ${mesesActivo} meses en la organizacion y en ${mesesRestantes} meses cumple el proximo año`
         }
     }
-    // si la validación del form es true, form.submit
-    console.log('Hola, le diste a enviar');
 })
